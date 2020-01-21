@@ -12,6 +12,22 @@ set -e
 
 # Functions:
 
+nmapsetup() {
+echo "downloading nmap scripts for vulnerabilities in db"
+cd /usr/share/nmap/scripts
+git clone https://github.com/VulnersCom/nmap-Vulners.git
+git clone https://github.com/scipag/vulscan.git
+cd /usr/share/nmap/scripts/vulscan/utilities/updater/
+chmod +x updateFiles.sh
+echo "updating files"
+./updateFiles.sh
+}
+
+nmapscan() {
+nmap --script nmap-vulners -sV -O -p- -o /root/Desktop/localhostscanVulners.nmap 127.0.0.1
+nmap -sV -O --script=vulscan/vulscan.nse -p- -o /root/Desktop/localscanVulscan.nmap 127.0.0.1
+}
+
 freshinstall() {
 echo "Changing sources.list"
 echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
@@ -202,6 +218,22 @@ if [ "$1" == "--freshinstall" ]; then
     
     leave
 fi
+
+#Nmap setup
+if [ "$1" == "--nmapsetup" ]; then
+    nmapsetup
+    
+    
+    leave
+fi
+
+if [ "$1" == "--nmapscan" ]; then
+    nmapscan
+    
+    
+    leave
+fi
+
 
 #Test things here
 if [ "$1" == "--test" ]; then
