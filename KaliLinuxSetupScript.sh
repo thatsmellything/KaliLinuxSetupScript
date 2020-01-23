@@ -15,7 +15,7 @@ set -e
 nmapsetup() {
 echo "downloading nmap scripts for vulnerabilities in db"
 cd /usr/share/nmap/scripts
-git clone https://github.com/VulnersCom/nmap-Vulners.git
+git clone https://github.com/VulnersCom/nmap-vulners.git
 git clone https://github.com/scipag/vulscan.git
 cd /usr/share/nmap/scripts/vulscan/utilities/updater/
 chmod +x updateFiles.sh
@@ -164,32 +164,24 @@ exit
 up_help() {
 
 less << _EOF_
-
  Up is a tool that automates the update procedure for Debian and Ubuntu based
  Linux systems.
-
  Press "q" to exit this Help page.
-
  Commands:
     updateTool = full system update.
     
-
     updateTool --freshinstall = update sources.list automatically,downloads all kali linux repos, full system update, full system upgrade, automatic driver installation, automatic ssh configuration.
     updateTool --update = does the freshinstall except for changing the sources.list and the ssh reconfig
 	updateTool --updatessh = creates new folder for old ssh keys and then creates a new set of keys. Also makes ssh run consistently even after reboot.
     Adding the "--clean" option will invoke the apt commands to search for and
     remove locally cached packages that are no longer in the repositories and
     remove orphaned packages that are no longer needed by programs. 
-
     The "--remove" option only removes orphaned packages, leaving the apt cache
     alone. 
-
     up --help = shows this help page.
-
  By Jensen Judkins aka thatsmellything
  
  Disclaimer:
-
  THIS SOFTWARE IS PROVIDED BY Jensen Judkins “AS IS” AND ANY EXPRESS OR IMPLIED
  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
@@ -200,7 +192,6 @@ less << _EOF_
  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
-
 _EOF_
 
 }
@@ -290,4 +281,5 @@ fi
 
 
 leave
+
 
