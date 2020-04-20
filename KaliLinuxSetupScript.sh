@@ -62,9 +62,15 @@ echo "Installing kali linux full"
 apt-get install kali-linux-full -yy
 echo "Installing kali linux all"
 apt-get install kali-linux-all -yy
+apt-get install kali-linux-everything -yy
 echo "downloading your notes"
 cd Desktop
 git clone https://github.com/thatsmellything/StinkyHax.git
+echo "Adding wifi support"
+sudo wget https://gregoryconrad.github.io/downloads/wifi_on_kali.zip
+unzip wifi_on_kali.zip
+cd wifi_on_kali/
+sudo chmod +x install-drivers.bash && sudo bash install-drivers.bash
 echo "upgrading the entire system"
 apt-get upgrade -yy
 echo "--------------------------------------------------------"
